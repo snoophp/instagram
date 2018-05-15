@@ -1,0 +1,33 @@
+{
+    "name": "snoophp/instagram",
+	"description": "Provides an easy-to-us interface to access instagram api endpoints",
+	"keywords": [
+		"instagram",
+		"api",
+		"insta",
+		"gram",
+		"snoophp",
+		"sneppy"
+	],
+    "type": "library",
+	"license": "MIT",
+	"minimum-stability": "dev",
+	"support": {
+		"issues": "https://github.com/snoophp/instagram/issues",
+        "source": "https://github.com/snoophp/instagram"
+	},
+    "authors": [
+        {
+            "name": "Sneppy",
+            "email": "andrea.mecchia@mail.polimi.it"
+        }
+    ],
+    "require": {
+		"php": ">7.0"
+	},
+	"autoload": {
+        "psr-4": {
+            "SnooPHP\\": "src/SnooPHP/"
+        }
+    }
+}
