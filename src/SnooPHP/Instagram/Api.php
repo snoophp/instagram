@@ -38,12 +38,12 @@ class Api
 	/**
 	 * @var string $cacheClass cache class
 	 */
-	protected $cacheClass = "SnooPHP\Instagram\Cache";
+	protected $cacheClass = "SnooPHP\Instagram\NullCache";
 
 	/**
 	 * @const ENDPOINT instagram api endpoint
 	 */
-	const ENDPOINT = "https://api.instagram.com/";
+	const ENDPOINT = "https://api.instagram.com";
 
 	/**
 	 * Perform a generic query
@@ -58,15 +58,15 @@ class Api
 		if (empty($this->token)) return false;
 
 		// Check if cached result exists
-		if ($record = $cacheClass::fetch($query, $this->token)) return $record;
+		if ($record = $this->cacheClass::fetch($query, $this->token)) return $record;
 
 		// Make api request
-		$curl = new Get($query);
+		$curl = new Get(static::ENDPOINT."/{$this->version}/{$query}".(strpos($query, '?') !== false ? '&' : '?')."access_token={$this->token}");
 		if ($curl && $curl->success())
 		{
 			// Save record in cache and return it
 			$raw = $curl->content();
-			return $cacheClass::store($query, $this->token, $raw);
+			return $this->cacheClass::store($query, $this->token, $raw);
 		}
 		else
 			return false;
