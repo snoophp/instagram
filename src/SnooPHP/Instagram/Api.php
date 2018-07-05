@@ -2,7 +2,7 @@
 
 namespace SnooPHP\Instagram;
 
-use SnooPHP\Http\Curl\Get;
+use SnooPHP\Curl\Get;
 
 /**
  * Perform raw api requests or use dedicated methods
@@ -43,12 +43,12 @@ class Api
 	/**
 	 * @var string $cacheClass cache class
 	 */
-	protected $cacheClass = "SnooPHP\Instagram\NullCache";
+	protected $cacheClass;
 
 	/**
 	 * @var string $defaultCacheClass
 	 */
-	protected static $defaultCacheClass = "SnooPHP\Facebook\NullCache";
+	protected static $defaultCacheClass = "SnooPHP\Cache\NullCache";
 
 	/**
 	 * @const ENDPOINT instagram api endpoint
